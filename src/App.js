@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React, { useState } from 'react';
+import FileUpload from './FileUpload';
+import DataPreview from './DataPreview';
+import Visualization from './Visualization';
+import './styles.css';
 
-function App() {
+const App = () => {
+  const [data, setData] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1 className="my-4">Data Visualization Tool</h1>
+      <FileUpload onDataLoaded={setData} />
+      <h2 className="my-4">Data Preview</h2>
+      <DataPreview data={data} />
+      <h2 className="my-4">Visualization</h2>
+      <Visualization data={data} />
     </div>
   );
-}
+};
 
 export default App;
